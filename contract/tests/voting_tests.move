@@ -1,6 +1,5 @@
 #[test_only]
 module contract::voting_tests {
-    use std::debug;
     use sui::test_scenario::{Self as ts, Scenario};
 
     use std::string::{Self, String};
@@ -141,7 +140,7 @@ module contract::voting_tests {
         scenario.next_tx(ORGANIZER);
         {
             let cap = ts::take_from_sender<OrganizerCap>(&scenario);
-            let mut event = scenario.take_shared<EventVotes>();
+            let event = scenario.take_shared<EventVotes>();
 
             event.delete_event(&cap);
 
